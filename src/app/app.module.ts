@@ -14,6 +14,7 @@ import { ActualizarClienteComponent } from './components/cliente/actualizar-clie
 import { ListarPedidosComponent } from './components/pedido/listar-pedidos/listar-pedidos.component';
 import { ListarCustomersComponent } from './components/customers/listar-customers/listar-customers.component';
 import { ProductoComponent } from './components/producto/producto/producto.component';
+import { ListarProjectsComponent } from './components/projects/listar-projects/listar-projects.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ProductoComponent } from './components/producto/producto/producto.compo
     ActualizarClienteComponent,
     ListarPedidosComponent,
     ListarCustomersComponent,
-    ProductoComponent
+    ProductoComponent,
+    ListarProjectsComponent
   ],
   imports: [
     BrowserModule,

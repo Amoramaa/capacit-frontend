@@ -1,0 +1,24 @@
+<br>
+<h3>Lista Projects</h3>
+<table class="table table.stripped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>FECHA DE INICIO</th>
+            <th>FECHA DE FINALIZACIÓN</th>
+            <th>PRESUPUESTO</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Aqui se recorren los projectos y se enlistan en la tabla-->
+        <tr *ngFor="let Projects of projects">
+            <td>{{Projects.id}}</td>
+            <td>{{Projects.nombre}}</td>
+            <td>{{Projects.fecha_inicio}}</td>
+            <td>{{Projects.fecha_fin}}</td>
+            <td>{{Projects.presupuesto}}</td>
+
+        </tr>
+    </tbody>
+</table>
