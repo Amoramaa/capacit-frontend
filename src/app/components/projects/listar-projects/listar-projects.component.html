@@ -8,6 +8,7 @@
             <th>FECHA DE INICIO</th>
             <th>FECHA DE FINALIZACIÓN</th>
             <th>PRESUPUESTO</th>
+            <th style="text-align: center;">ACCIONES</th>
         </tr>
     </thead>
     <tbody>
@@ -15,9 +16,16 @@
         <tr *ngFor="let Projects of projects">
             <td>{{Projects.id}}</td>
             <td>{{Projects.nombre}}</td>
-            <td>{{Projects.fecha_inicio}}</td>
-            <td>{{Projects.fecha_fin}}</td>
+            <td style="text-align: center;">{{Projects.fecha_inicio}}</td>
+            <td style="text-align: center;">{{Projects.fecha_fin}}</td>
             <td>{{Projects.presupuesto}}</td>
+            <td>
+                
+                <button  class="btn btn-info">Actualizar</button>
+                <button class="btn btn-info" style="margin-left : 10px">Eliminar</button>
+                <button class="btn btn-primary" style="margin-left : 10px">Detalles</button>
+            
+            </td>
 
         </tr>
     </tbody>
