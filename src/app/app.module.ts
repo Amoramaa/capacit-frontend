@@ -15,6 +15,8 @@ import { ListarPedidosComponent } from './components/pedido/listar-pedidos/lista
 import { ListarCustomersComponent } from './components/customers/listar-customers/listar-customers.component';
 import { ProductoComponent } from './components/producto/producto/producto.component';
 import { ListarProjectsComponent } from './components/projects/listar-projects/listar-projects.component';
+import { RegistrarProjectsComponent } from './components/projects/registrar-projects/registrar-projects/registrar-projects.component';
+import { ProjectDetailComponent } from './components/projects/project-detail/project-detail.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { ListarProjectsComponent } from './components/projects/listar-projects/l
     ListarPedidosComponent,
     ListarCustomersComponent,
     ProductoComponent,
-    ListarProjectsComponent
+    ListarProjectsComponent,
+    RegistrarProjectsComponent,
+    ProjectDetailComponent
   ],
   imports: [
     BrowserModule,

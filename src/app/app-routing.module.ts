@@ -8,6 +8,7 @@ import { ListarClientesComponent } from './components/cliente/listar-clientes/li
 import { ActualizarClienteComponent } from './components/cliente/actualizar-cliente/actualizar-cliente.component';
 import { ListarPedidosComponent } from './components/pedido/listar-pedidos/listar-pedidos.component';
 import { ListarProjectsComponent } from './components/projects/listar-projects/listar-projects.component';
+import { RegistrarProjectsComponent } from './components/projects/registrar-projects/registrar-projects/registrar-projects.component';
 
 //aqui se configuran las rutas URL a donde tienen que redireccionar (componentes)
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path : 'clientes', component:ListarClientesComponent},
   {path : 'actualizar-cliente/:id', component : ActualizarClienteComponent},
   {path : 'pedidos', component : ListarPedidosComponent},
-  {path : 'projects', component : ListarProjectsComponent}
+  {path : 'projects', component : ListarProjectsComponent},
+  {path : 'registrar-projects', component : RegistrarProjectsComponent},
 ];
 
 @NgModule({

@@ -15,4 +15,7 @@ export class ProjectsService {
   getProjectsById(id:number):Observable<Projects>{
     return this.httpClient.get<Projects>(`${this.baseURL}/buscarporid/${id}`)
   }
+  registrarProjects(projects:Projects) : Observable<Object>{
+    return this.httpClient.post(`${this.baseURL}`,projects)
+  }
 }

@@ -1,0 +1,43 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center"> Registro de projects</h3><br>
+    <form (ngSubmit)="onSudmit()">
+        <div class="form-group">
+            <label>Nombre: </label>
+            <input type="text"
+            class="form-control"
+            id="nombre"
+            [(ngModel)] = "projects.nombre"
+            name="nombre">
+            
+        </div><br>
+        <div class="form-group">
+            <label>fecha inicio: </label>
+            <input type="text"
+            class="form-control"
+            id="fecha_inicio"
+            [(ngModel)] = "projects.fecha_inicio"
+            name="fecha_inicio">
+            
+        </div><br>
+        <div class="form-group">
+            <label>fecha fin: </label>
+            <input type="text"
+            class="form-control"
+            id="fecha_fin"
+            [(ngModel)] = "projects.fecha_fin"
+            name="fecha_fin">
+            
+        </div><br>
+        <div class="form-group">
+            <label>presupuesto: </label>
+            <input type="text"
+            class="form-control"
+            id="presupuesto"
+            [(ngModel)] = "projects.presupuesto"
+            name="presupuesto">
+            
+        </div>
+        <br>
+        <button class="btn btn-success">Guardar</button>
+    </form>
+</div>
