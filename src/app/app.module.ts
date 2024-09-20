@@ -17,6 +17,7 @@ import { ProductoComponent } from './components/producto/producto/producto.compo
 import { ListarProjectsComponent } from './components/projects/listar-projects/listar-projects.component';
 import { RegistrarProjectsComponent } from './components/projects/registrar-projects/registrar-projects/registrar-projects.component';
 import { ProjectDetailComponent } from './components/projects/project-detail/project-detail.component';
+import { ActualizarProjectComponent } from './components/projects/actualizar-project/actualizar-project/actualizar-project.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ProjectDetailComponent } from './components/projects/project-detail/pro
     ProductoComponent,
     ListarProjectsComponent,
     RegistrarProjectsComponent,
-    ProjectDetailComponent
+    ProjectDetailComponent,
+    ActualizarProjectComponent
   ],
   imports: [
     BrowserModule,

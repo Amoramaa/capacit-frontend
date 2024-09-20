@@ -9,6 +9,8 @@ import { ActualizarClienteComponent } from './components/cliente/actualizar-clie
 import { ListarPedidosComponent } from './components/pedido/listar-pedidos/listar-pedidos.component';
 import { ListarProjectsComponent } from './components/projects/listar-projects/listar-projects.component';
 import { RegistrarProjectsComponent } from './components/projects/registrar-projects/registrar-projects/registrar-projects.component';
+import { ProjectDetailComponent } from './components/projects/project-detail/project-detail.component';
+import { ActualizarProjectComponent } from './components/projects/actualizar-project/actualizar-project/actualizar-project.component';
 
 //aqui se configuran las rutas URL a donde tienen que redireccionar (componentes)
 const routes: Routes = [
@@ -22,6 +24,8 @@ const routes: Routes = [
   {path : 'pedidos', component : ListarPedidosComponent},
   {path : 'projects', component : ListarProjectsComponent},
   {path : 'registrar-projects', component : RegistrarProjectsComponent},
+  { path: 'projects/:id', component: ProjectDetailComponent },
+  { path: 'projects/actualizar/:id', component: ActualizarProjectComponent },
 ];
 
 @NgModule({

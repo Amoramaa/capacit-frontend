@@ -1,6 +1,5 @@
-<br>
 <h3>Lista Projects</h3>
-<table class="table table.stripped">
+<table class="table table-striped">
     <thead class="table-dark">
         <tr>
             <th>ID</th>
@@ -12,21 +11,23 @@
         </tr>
     </thead>
     <tbody>
-        <!-- Aqui se recorren los projectos y se enlistan en la tabla-->
-        <tr *ngFor="let Projects of projects">
-            <td>{{Projects.id}}</td>
-            <td>{{Projects.nombre}}</td>
-            <td style="text-align: center;">{{Projects.fecha_inicio}}</td>
-            <td style="text-align: center;">{{Projects.fecha_fin}}</td>
-            <td>{{Projects.presupuesto}}</td>
-            <td>
+        <!-- Aquí se recorren los proyectos y se enlistan en la tabla -->
+        <tr *ngFor="let project of projects">
+            <td>{{ project.id }}</td>
+            <td>{{ project.nombre }}</td>
+            <td style="text-align: center;">{{ project.fecha_inicio }}</td>
+            <td style="text-align: center;">{{ project.fecha_fin }}</td>
+            <td>{{ project.presupuesto | currency }}</td>
+            <td style="text-align: center;">
+                <!-- listar-projects.component.html -->
+                <button (click)="verDetallesProyecto(project.id)" class="btn btn-primary" style="margin-right: 10px;">Detalles</button>
                 
-                <button  class="btn btn-info">Actualizar</button>
-                <button class="btn btn-info" style="margin-left : 10px">Eliminar</button>
-                <button class="btn btn-primary" style="margin-left : 10px">Detalles</button>
-            
-            </td>
+                <button (click)="actualizarProyecto(project.id)" class="btn btn-info">Actualizar</button>
 
+                <button class="btn btn-danger" style="margin-left: 10px;">Eliminar</button>
+                <!-- Botón de detalles con la función verDetallesProyecto -->
+                
+            </td>
         </tr>
     </tbody>
 </table>

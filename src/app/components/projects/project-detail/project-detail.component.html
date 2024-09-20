@@ -1,1 +1,16 @@
-<p>project-detail works!</p>
+<div *ngIf="project">
+    <h2>Detalles del Proyecto: {{ project.nombre }}</h2>
+    <p><strong>ID:</strong> {{ project.id }}</p>
+    <p><strong>Fecha de Inicio:</strong> {{ project.fecha_inicio }}</p>
+    <p><strong>Fecha de Fin:</strong> {{ project.fecha_fin }}</p>
+    <p><strong>Presupuesto:</strong> {{ project.presupuesto | currency }}</p>
+</div>
+
+<div *ngIf="!project">
+    <p>Cargando detalles del proyecto...</p>
+</div>
+
+<!-- Botón para regresar a la página anterior -->
+<button (click)="regresar()" class="btn btn-secondary" style="margin-top: 20px;">
+  Regresar
+</button>

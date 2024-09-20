@@ -18,4 +18,9 @@ export class ProjectsService {
   registrarProjects(projects:Projects) : Observable<Object>{
     return this.httpClient.post(`${this.baseURL}`,projects)
   }
+  
+  actualizarProject(id: number, project: Projects): Observable<Object> {
+    return this.httpClient.put(`${this.baseURL}/${id}`, project);
+}
+
 }
