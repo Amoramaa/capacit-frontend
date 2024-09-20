@@ -27,12 +27,22 @@ export class ListarProjectsComponent implements OnInit {
 
   verDetallesProyecto(id: number): void {
     // Redirige a la página de detalles del proyecto
-    
     this.router.navigate([`/projects/${id}`]);
   }
   // listar-projects.component.ts
   actualizarProyecto(id: number): void {
     this.router.navigate([`/projects/actualizar/${id}`]);
-}
-
+  }
+  eliminarProject(id: number): void {
+    if (confirm('¿Estás seguro de que deseas eliminar este proyecto?')) {
+      this.projectsService.eliminarProject(id).subscribe(
+        () => {
+          console.log('Proyecto eliminado con éxito');
+          this.obtenerProjects();  // Vuelve a cargar la lista de proyectos después de eliminar uno
+        },
+        error => console.error('Error al eliminar el proyecto:', error)
+      );
+    }
+  }
+  
 }
