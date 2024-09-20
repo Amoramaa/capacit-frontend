@@ -25,5 +25,9 @@ export class ProjectsService {
   eliminarProject(id: number): Observable<Object> {
   return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
+  listarProjectsPaginados(page: number, size: number): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseURL}/page?page=${page}&size=${size}`);
+}
+
 
 }

@@ -10,21 +10,29 @@ import swal from 'sweetalert2';
 })
 export class ListarProjectsComponent implements OnInit {
   projects: Projects[] = [];
-
+  totalPages: number = 0;
+  currentPage: number = 0;
+  pageSize: number = 5; // Puedes cambiarlo según lo que necesites
   constructor(private projectsService: ProjectsService, private router: Router) { }
 
   ngOnInit(): void {
-    this.obtenerProjects();
+    this.obtenerProjects(this.currentPage);
   }
 
-  obtenerProjects(): void {
-    this.projectsService.listarProjects().subscribe(data => {
-      this.projects = data;
+  obtenerProjects(page: number): void {
+    this.projectsService.listarProjectsPaginados(page, this.pageSize).subscribe(data => {
+      this.projects = data.projects;  // Acceder correctamente a 'projects'
+      this.totalPages = data.totalPages;
+      this.currentPage = data.currentPage;
     }, error => {
-      console.error('Error al obtener la lista de proyectos:', error);
+      console.error('Error al obtener la lista de proyectos paginados:', error);
     });
   }
-
+  
+  cambiarPagina(page: number): void {
+    this.currentPage = page;
+    this.obtenerProjects(this.currentPage);
+  }
   verDetallesProyecto(id: number): void {
     // Redirige a la página de detalles del proyecto
     this.router.navigate([`/projects/${id}`]);
@@ -38,7 +46,7 @@ export class ListarProjectsComponent implements OnInit {
       this.projectsService.eliminarProject(id).subscribe(
         () => {
           console.log('Proyecto eliminado con éxito');
-          this.obtenerProjects();  // Vuelve a cargar la lista de proyectos después de eliminar uno
+          this.obtenerProjects(this.currentPage);  // Vuelve a cargar la lista de proyectos después de eliminar uno
         },
         error => console.error('Error al eliminar el proyecto:', error)
       );

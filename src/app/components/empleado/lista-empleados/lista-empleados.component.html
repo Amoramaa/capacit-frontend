@@ -18,9 +18,9 @@
             <td>{{empleado.salario}}</td>
             <td>{{empleado.rfc}}</td>
             <td>
+                <button (click)="verDetallesEmpleado(empleado.id)" class="btn btn-primary" style="margin-left : 10px">Detalles</button>
                 <button (click)="actualizarEmpleado(empleado.id)" class="btn btn-info">Actualizar</button>
                 <button (click)="eliminarEmpleado(empleado.id)" class="btn btn-info" style="margin-left : 10px">Eliminar</button>
-                <button (click)="verDetallesEmpleado(empleado.id)" class="btn btn-primary" style="margin-left : 10px">Detalles</button>
             </td>
         </tr>
     </tbody>

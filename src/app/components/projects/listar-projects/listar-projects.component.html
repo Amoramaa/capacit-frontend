@@ -11,23 +11,40 @@
         </tr>
     </thead>
     <tbody>
-        <!-- Aquí se recorren los proyectos y se enlistan en la tabla -->
         <tr *ngFor="let project of projects">
             <td>{{ project.id }}</td>
             <td>{{ project.nombre }}</td>
-            <td style="text-align: center;">{{ project.fecha_inicio }}</td>
-            <td style="text-align: center;">{{ project.fecha_fin }}</td>
+            <td >{{ project.fecha_inicio }}</td>
+            <td>{{ project.fecha_fin }}</td>
             <td>{{ project.presupuesto | currency }}</td>
             <td style="text-align: center;">
-                <!-- listar-projects.component.html -->
-                <button (click)="verDetallesProyecto(project.id)" class="btn btn-primary" style="margin-right: 10px;">Detalles</button>
-                
-                <button (click)="actualizarProyecto(project.id)" class="btn btn-info">Actualizar</button>
-
-                <button (click)="eliminarProject(project.id)" class="btn btn-danger" style="margin-left: 10px;">Eliminar</button>
-                <!-- Botón de detalles con la función verDetallesProyecto -->
+                <button class="btn btn-primary" style="margin-right: 10px;" (click)="verDetallesProyecto(project.id)">Detalles</button>
+                <button class="btn btn-info">Actualizar</button>
+                <button class="btn btn-danger" style="margin-left: 10px;">Eliminar</button>
                 
             </td>
         </tr>
     </tbody>
 </table>
+
+<!-- Paginación -->
+<nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+    <li class="page-item" [class.disabled]="currentPage === 0">
+      <a class="page-link" (click)="cambiarPagina(currentPage - 1)" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+
+    <li class="page-item" *ngFor="let i of [].constructor(totalPages); let idx = index" 
+        [class.active]="currentPage === idx">
+      <a class="page-link" (click)="cambiarPagina(idx)">{{ idx + 1 }}</a>
+    </li>
+
+    <li class="page-item" [class.disabled]="currentPage === totalPages - 1">
+      <a class="page-link" (click)="cambiarPagina(currentPage + 1)" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
