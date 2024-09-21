@@ -1,33 +1,55 @@
-<h3>Lista Projects</h3>
+<h3>Lista Proyectos</h3>
+<div style="display: flex; justify-content: space-between; align-items: center;">
+  <div>
+    <button class="btn btn-success" style="margin-bottom: 10px;">Agregar</button>
+  </div>
+
+  <!-- Barra de búsqueda -->
+  <div class="form-group" style="flex-grow: 1; display: flex; align-items: center; justify-content: end;">
+    <label for="searchTerm" style="margin-right: 10px;">Buscar Proyecto:</label>
+    <input type="text" id="searchTerm" class="form-control" [(ngModel)]="searchTerm" placeholder="Buscar por nombre o fecha" (input)="buscarProyectos()" style="width: 300px;" />
+  </div>
+</div>
+
 <table class="table table-striped">
-    <thead class="table-dark">
-        <tr>
-            <th>ID</th>
-            <th>NOMBRE</th>
-            <th>FECHA DE INICIO</th>
-            <th>FECHA DE FINALIZACIÓN</th>
-            <th>PRESUPUESTO</th>
-            <th style="text-align: center;">ACCIONES</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let project of projects">
-            <td>{{ project.id }}</td>
-            <td>{{ project.nombre }}</td>
-            <td >{{ project.fecha_inicio }}</td>
-            <td>{{ project.fecha_fin }}</td>
-            <td>{{ project.presupuesto | currency }}</td>
-            <td style="text-align: center;">
-                <button class="btn btn-primary" style="margin-right: 10px;" (click)="verDetallesProyecto(project.id)">Detalles</button>
-                <button class="btn btn-info">Actualizar</button>
-                <button class="btn btn-danger" style="margin-left: 10px;">Eliminar</button>
-                
-            </td>
-        </tr>
-    </tbody>
+  <thead class="table-dark">
+    <tr>
+      <th>Nombre</th>
+      <th>Fecha Inicio</th>
+      <th>Fecha Fin</th>
+      <th>Presupuesto</th>
+      <th style="text-align: center;">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let project of filteredProjects">
+      <td>{{ project.nombre }}</td>
+      <td>{{ project.fecha_inicio }}</td>
+      <td>{{ project.fecha_fin }}</td>
+      <td>{{ project.presupuesto | currency }}</td>
+      <td style="text-align: center;">
+        <button class="btn btn-primary" style="margin: 0px 10px 0px 0px;" (click)="verDetallesProyecto(project.id)">Detalles</button>
+        <button class="btn btn-info" style="margin: 0px 10px 0px 0px;" (click)="actualizarProyecto(project.id)">Actualizar</button>
+        <button class="btn btn-danger" (click)="eliminarProject(project.id)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+
+  <!-- Combobox para seleccionar la cantidad de registros por página -->
+  <br>
+  <div class="form-group">
+    <label for="pageSize">Registros por página: </label>
+    <select id="pageSize" class="form-control" [(ngModel)]="pageSize" (change)="onChangePageSize($event)" style="width: 50px;">
+      <option *ngFor="let size of pageSizes" [value]="size">{{size}}</option>
+      
+    </select>
+    
+  </div>
 </table>
 
 <!-- Paginación -->
+<hr>
+
 <nav aria-label="Page navigation">
   <ul class="pagination justify-content-center">
     <li class="page-item" [class.disabled]="currentPage === 0">
@@ -36,8 +58,7 @@
       </a>
     </li>
 
-    <li class="page-item" *ngFor="let i of [].constructor(totalPages); let idx = index" 
-        [class.active]="currentPage === idx">
+    <li class="page-item" *ngFor="let i of [].constructor(totalPages); let idx = index" [class.active]="currentPage === idx">
       <a class="page-link" (click)="cambiarPagina(idx)">{{ idx + 1 }}</a>
     </li>
 
