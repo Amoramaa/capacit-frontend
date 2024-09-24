@@ -10,12 +10,13 @@ import swal from 'sweetalert2';
   styleUrls: ['./listar-projects.component.css']
 })
 export class ListarProjectsComponent implements OnInit {
+  
   projects: Projects[] = [];
   filteredProjects: Projects[] = []; // Lista filtrada que se mostrará en la tabla
   searchTerm: string = ''; // Término de búsqueda
   totalPages: number = 0;
   currentPage: number = 0;
-  pageSize: number = 5; // Puedes cambiarlo según lo que necesites
+  pageSize: number = 10; //Paginación por defecto.
   pageSizes: number[] = [5, 10, 20, 50]; // Opciones para el combo de tamaño de página
 
   constructor(private projectsService: ProjectsService, private router: Router) { }
@@ -55,24 +56,33 @@ export class ListarProjectsComponent implements OnInit {
     this.pageSize = event.target.value;
     this.obtenerProjects(this.currentPage);
   }
-
+  //Método para ver el proyecto.
   verDetallesProyecto(id: number): void {
     this.router.navigate([`/projects/${id}`]);
   }
-
+  //Método para actualizar el proyecto.
   actualizarProyecto(id: number): void {
     this.router.navigate([`/projects/actualizar/${id}`]);
   }
-
+  //Método para eliminar el proyecto.
   eliminarProject(id: number): void {
     if (confirm('¿Estás seguro de que deseas eliminar este proyecto?')) {
       this.projectsService.eliminarProject(id).subscribe(
         () => {
-          console.log('Proyecto eliminado con éxito');
-          this.obtenerProjects(this.currentPage);  // Vuelve a cargar la lista de proyectos después de eliminar uno
-        },
-        error => console.error('Error al eliminar el proyecto:', error)
+          // Vuelve a cargar la lista de proyectos después de eliminar uno
+          this.obtenerProjects(this.currentPage);  
+        },// Se comprueba si el error es de tipo 500 y si el mensaje contiene la palabra "constraint" (indicando que hay una restricción de integridad referencial). 
+        error => {
+          if (error.status === 500 && error.error.message.includes('constraint')) {
+            
+            alert('No es posible eliminar este proyecto porque tiene dependencias con otra tabla.');
+          } 
+        }
       );
     }
+  }
+  
+  calcularIndice(index: number): number {
+    return index + 1 + this.currentPage * this.pageSize;
   }
 }

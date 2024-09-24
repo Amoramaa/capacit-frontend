@@ -12,19 +12,23 @@ export class ProjectsService {
   listarProjects():Observable<Projects[]>{
     return this.httpClient.get<Projects[]>(`${this.baseURL}`);
   }
+  //Vista detalles.
   getProjectsById(id:number):Observable<Projects>{
     return this.httpClient.get<Projects>(`${this.baseURL}/buscarporid/${id}`)
   }
+  //Vista Registrar
   registrarProjects(projects:Projects) : Observable<Object>{
     return this.httpClient.post(`${this.baseURL}`,projects)
   }
-  
+  //Vista Actualizar
   actualizarProject(id: number, project: Projects): Observable<Object> {
     return this.httpClient.put(`${this.baseURL}/${id}`, project);
   }
+  //Vista Eliminar
   eliminarProject(id: number): Observable<Object> {
   return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
+  //Páginación
   listarProjectsPaginados(page: number, size: number): Observable<any> {
     return this.httpClient.get<any>(`${this.baseURL}/page?page=${page}&size=${size}`);
 }
