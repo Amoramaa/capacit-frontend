@@ -1,43 +1,29 @@
-<div class="col-md-6 offset-md-3">
-    <h3 class="text-center"> Registro de projects</h3><br>
-    <form (ngSubmit)="onSudmit()">
-        <div class="form-group">
-            <label>Nombre: </label>
-            <input type="text"
-            class="form-control"
-            id="nombre"
-            [(ngModel)] = "projects.nombre"
-            name="nombre">
-            
-        </div><br>
-        <div class="form-group">
-            <label>fecha inicio: </label>
-            <input type="text"
-            class="form-control"
-            id="fecha_inicio"
-            [(ngModel)] = "projects.fecha_inicio"
-            name="fecha_inicio">
-            
-        </div><br>
-        <div class="form-group">
-            <label>fecha fin: </label>
-            <input type="text"
-            class="form-control"
-            id="fecha_fin"
-            [(ngModel)] = "projects.fecha_fin"
-            name="fecha_fin">
-            
-        </div><br>
-        <div class="form-group">
-            <label>presupuesto: </label>
-            <input type="text"
-            class="form-control"
-            id="presupuesto"
-            [(ngModel)] = "projects.presupuesto"
-            name="presupuesto">
-            
-        </div>
-        <br>
-        <button class="btn btn-success">Guardar</button>
+<div class="container">
+    <h2>Registrar Nuevo Proyecto</h2>
+  
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nombre">Nombre del Proyecto:</label>
+        <input type="text" id="nombre" [(ngModel)]="project.nombre" name="nombre" class="form-control" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="fecha_inicio">Fecha de Inicio:</label>
+        <input type="date" id="fecha_inicio" [(ngModel)]="project.fecha_inicio" name="fecha_inicio" class="form-control" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="fecha_fin">Fecha de Fin:</label>
+        <input type="date" id="fecha_fin" [(ngModel)]="project.fecha_fin" name="fecha_fin" class="form-control" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="presupuesto">Presupuesto:</label>
+        <input type="number" id="presupuesto" [(ngModel)]="project.presupuesto" name="presupuesto" class="form-control" required />
+      </div>
+  
+      <button type="submit" class="btn btn-success" style="margin: 10px 10px 10px 0px;">Registrar</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
     </form>
-</div>
+  </div>
+  

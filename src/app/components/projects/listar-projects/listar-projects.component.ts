@@ -56,6 +56,10 @@ export class ListarProjectsComponent implements OnInit {
     this.pageSize = event.target.value;
     this.obtenerProjects(this.currentPage);
   }
+  public navegarARegistrar(): void {
+    this.router.navigate(['/projects/registrar']);
+  }
+  
   //Método para ver el proyecto.
   verDetallesProyecto(id: number): void {
     this.router.navigate([`/projects/${id}`]);

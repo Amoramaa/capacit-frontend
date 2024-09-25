@@ -7,7 +7,7 @@ import { Projects } from 'src/app/models/projects/projects/projects';
   providedIn: 'root'
 })
 export class ProjectsService {
-  private baseURL="http://localhost:8080/api/v1/projects"
+  private baseURL="http://localhost:8080/api/v1/projects";
   constructor(private httpClient: HttpClient) { }
   listarProjects():Observable<Projects[]>{
     return this.httpClient.get<Projects[]>(`${this.baseURL}`);
@@ -17,9 +17,10 @@ export class ProjectsService {
     return this.httpClient.get<Projects>(`${this.baseURL}/buscarporid/${id}`)
   }
   //Vista Registrar
-  registrarProjects(projects:Projects) : Observable<Object>{
-    return this.httpClient.post(`${this.baseURL}`,projects)
+  registrarProjects(project: Projects): Observable<Projects> {
+    return this.httpClient.post<Projects>(`${this.baseURL}/crear`, project);
   }
+  
   //Vista Actualizar
   actualizarProject(id: number, project: Projects): Observable<Object> {
     return this.httpClient.put(`${this.baseURL}/${id}`, project);

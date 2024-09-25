@@ -23,9 +23,10 @@ const routes: Routes = [
   {path : 'actualizar-cliente/:id', component : ActualizarClienteComponent},
   {path : 'pedidos', component : ListarPedidosComponent},
   {path : 'projects', component : ListarProjectsComponent},
-  {path : 'registrar-projects', component : RegistrarProjectsComponent},
+  { path: 'projects/registrar', component: RegistrarProjectsComponent },  // Nueva ruta
   { path: 'projects/:id', component: ProjectDetailComponent },
   { path: 'projects/actualizar/:id', component: ActualizarProjectComponent },
+  
 ];
 
 @NgModule({
